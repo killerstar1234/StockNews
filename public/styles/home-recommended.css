@@ -1,0 +1,37 @@
+
+  .company-name {
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  .techy-stock-prices {
+    background-color: #222;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 3%;
+  }
+  
+  .techy-stock-prices ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .techy-stock-prices li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .techy-stock-prices .company-name {
+    font-weight: bold;
+  }
+  
+  .techy-stock-prices .stock-price {
+    font-family: 'Courier New', monospace;
+  }
+  

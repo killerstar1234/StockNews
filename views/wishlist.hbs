@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock News</title>
+    <link rel = 'stylesheet' href = '/css/header.css' />
+    <link rel= 'stylesheet' href = '/css/wishlist.css' />
+    <link rel="icon" type="image/x-icon" href="/img/logo.png" />
+
+    <style>
+
+      .inputs {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 50px;
+      }
+      
+      label {
+        color: #fff;
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+      
+      input[type=text],
+      input[type=email],
+      input[type=password] {
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        width: 300px;
+        font-size: 16px;
+        background-color: #3d3d3d;
+        color: #fff;
+      }
+      
+      input[type=submit] {
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #4caf50;
+        color: #fff;
+        font-size: 18px;
+        cursor: pointer;
+      }
+      
+      input[type=submit]:hover {
+        background-color: #3e8e41;
+      }
+    </style>
+
+</head>
+<body>
+    <div class="header">
+        <a href="/" class="logo">Stock News</a>
+        <div class="header-right">
+          <a class="active" href="/">Home</a>
+          <a href="/wishlist">Wishlist</a>
+          <a href="/search">Search</a>
+          <a href="/search/news">News</a>
+          <a href="/contact">Contact</a>
+          <a href="/about">About</a>
+        </div>
+      </div>
+      </div>
+
+
+    <div class = 'inputs'>
+      <label for="name">Trading Name:</label>
+      <input type="text" id="name" name="name" required>
+      <input type="submit" value="Add Item" onclick="addStock()">
+    </div>
+
+
+      <div class="stock-wishlist">
+        <h2 class="wishlist-title">My Stock Wishlist</h2>
+        <ul class="wishlist-items" id = "wishlist-items">
+
+        </ul>
+      </div>
+
+      <center>
+        <p style="color:#fff">To delete a stock off the wishlist click the name, it will bring you to the analysis but you can close out of it. Refresh the page after to see the changes!</p>
+        <input type="submit" value="Delete Stock(s)" onclick="deleteStock()">
+      </center>      
+
+      <script src = '/js/wishlist.js'></script>
+
+</body>
+
+</html>

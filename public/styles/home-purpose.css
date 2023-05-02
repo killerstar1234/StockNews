@@ -1,0 +1,69 @@
+.website-purpose {
+    background-color: #222;
+    padding: 20px;
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+    margin: 3%;
+  }
+  
+  .purpose-title {
+    color: #fff;
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  
+  .purpose-description {
+    color: #fff;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    text-align: justify;
+  }
+  
+  .purpose-features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .purpose-feature {
+    width: calc(33.33% - 10px);
+    margin-bottom: 20px;
+  }
+  
+  .feature-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    color: #fff;
+    border-radius: 50%;
+    background-color: #1a1a1a;
+    margin-right: 20px;
+  }
+  
+  .feature-name {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+  }
+  
+  .feature-description {
+    color: #fff;
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: justify;
+  }
+  
+  body {
+    background-color: #1a1a1a;
+  }

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Stock Details</title>
+    <style>
+      /* Add your CSS code here */
+      body {
+        font-family: 'Courier New', Courier, monospace;
+        background-color: #262626;
+        color: white;
+      }
+      
+      h1 {
+        font-size: 40px;
+        text-align: center;
+        margin-top: 50px;
+      }
+      
+      .section {
+        margin: 50px;
+        border: 2px solid white;
+        padding: 20px;
+      }
+      
+      table {
+        margin-top: 50px;
+        width: 100%;
+        border-collapse: collapse;
+      }
+      
+      th, td {
+        border: 1px solid white;
+        text-align: left;
+        padding: 8px;
+      }
+      
+      th {
+        background-color: #4CAF50;
+        color: white;
+      }
+      .esg-scores {
+        background-color: #262626;
+        color: #FFFFFF;
+        padding: 20px;
+        font-family: 'Roboto', sans-serif;
+      }
+
+      .esg-scores h2 {
+        font-size: 36px;
+        margin-bottom: 20px;
+      }
+
+      .esg-scores p {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+
+      .esg-scores p:first-child {
+        margin-top: 0;
+      }
+
+      .esg-scores p:last-child {
+        margin-bottom: 0;
+      }
+      .table-container {
+        max-height: 400px; /* set a maximum height for the container */
+        overflow-y: auto; /* enable vertical scrolling */
+      }
+
+      /* custom scrollbar */
+      .table-container::-webkit-scrollbar {
+        width: 8px; /* set width of scrollbar */
+      }
+
+      .table-container::-webkit-scrollbar-track {
+        background-color: #f5f5f5; /* set background color of scrollbar track */
+        border-radius: 10px; /* round the edges of the track */
+      }
+
+      .table-container::-webkit-scrollbar-thumb {
+        background-color: #4CAF50; /* set color of scrollbar thumb */
+        border-radius: 10px; /* round the edges of the thumb */
+      }
+
+      .table-container::-webkit-scrollbar-thumb:hover {
+        background-color: #09d810; /* set color of scrollbar thumb on hover */
+      }
+
+    </style>
+  </head>
+  <body>
+    <h1>Stock Details</h1>
+    {{#if jsonData}}
+
+    {{#if jsonData.[0].assetProfile}}
+    <div class="section">
+      <h2>Asset Profile</h2>
+      <table>
+        <tr>
+          <th>Address</th>
+          <td>{{jsonData.[0].assetProfile.[0].address1}}, {{jsonData.[0].assetProfile.[0].city}}, {{jsonData.[0].assetProfile.[0].state}} {{jsonData.[0].assetProfile.[0].zip}}, {{jsonData.[0].assetProfile.[0].country}}</td>
+        </tr>
+        <tr>
+          <th>Phone</th>
+          <td>{{jsonData.[0].assetProfile.[0].phone}}</td>
+        </tr>
+        <tr>
+          <th>Website</th>
+          <td>{{jsonData.[0].assetProfile.[0].website}}</td>
+        </tr>
+        <tr>
+          <th>Industry</th>
+          <td>{{jsonData.[0].assetProfile.[0].industry}}</td>
+        </tr>
+        <tr>
+          <th>Sector</th>
+          <td>{{jsonData.[0].assetProfile.[0].sector}}</td>
+        </tr>
+        <tr>
+          <th>Long Business Summary</th>
+          <td>{{jsonData.[0].assetProfile.[0].longBusinessSummary}}</td>
+        </tr>
+      </table>
+    </div>
+    {{/if}}
+    
+    {{#if jsonData.[0].recommendationTrend}}
+    <div class="section">
+      <h2>Recommendation Trend</h2>
+      <table>
+        <tr>
+          <th>Period</th>
+          <th>Strong Buy</th>
+          <th>Buy</th>
+          <th>Hold</th>
+          <th>Sell</th>
+          <th>Strong Sell</th>
+        </tr>
+        {{#each jsonData.[0].recommendationTrend}}
+          <tr>
+            <td>{{period}}</td>
+            <td>{{strongBuy}}</td>
+            <td>{{buy}}</td>
+            <td>{{hold}}</td>
+            <td>{{sell}}</td>
+            <td>{{strongSell}}</td>
+          </tr>
+        {{/each}}
+      </table>
+    </div>
+    {{/if}}
+    
+
+{{#if jsonData.[0].esgScores}}
+<div class="section table-container" style="overflow-x: auto;">
+  <h2>ESG Scores</h2>
+  <table>
+    <tr>
+      <th>Total ESG Score</th>
+      <th>Environment Score</th>
+      <th>Social Score</th>
+      <th>Governance Score</th>
+      <th>Rating Year</th>
+      <th>Rating Month</th>
+      <th>Peer Group</th>
+      <th>Environment Percentile</th>
+      <th>Social Percentile</th>
+      <th>Governance Percentile</th>
+      <th>Adult</th>
+      <th>Alcoholic</th>
+      <th>Animal Testing</th>
+      <th>Catholic</th>
+      <th>Controversial Weapons</th>
+      <th>Small Arms</th>
+      <th>Fur/Leather</th>
+      <th>Gambling</th>
+      <th>GMO</th>
+      <th>Military Contract</th>
+      <th>Nuclear</th>
+      <th>Pesticides</th>
+      <th>Palm Oil</th>
+      <th>Coal</th>
+      <th>Tobacco</th>
+    </tr>
+    {{#each jsonData.[0].esgScores}}
+      <tr>
+        <td>{{totalEsg}}</td>
+        <td>{{environmentScore}}</td>
+        <td>{{socialScore}}</td>
+        <td>{{governanceScore}}</td>
+        <td>{{ratingYear}}</td>
+        <td>{{ratingMonth}}</td>
+        <td>{{peerGroup}}</td>
+        <td>{{environmentPercentile}}</td>
+        <td>{{socialPercentile}}</td>
+        <td>{{governancePercentile}}</td>
+        <td>{{adult}}</td>
+        <td>{{alcoholic}}</td>
+        <td>{{animalTesting}}</td>
+        <td>{{catholic}}</td>
+        <td>{{controversialWeapons}}</td>
+        <td>{{smallArms}}</td>
+        <td>{{furLeather}}</td>
+        <td>{{gambling}}</td>
+        <td>{{gmo}}</td>
+        <td>{{militaryContract}}</td>
+        <td>{{nuclear}}</td>
+        <td>{{pesticides}}</td>
+        <td>{{palmOil}}</td>
+        <td>{{coal}}</td>
+        <td>{{tobacco}}</td>
+      </tr>
+    {{/each}}
+  </table>
+</div>
+{{/if}}
+
+
+{{#if jsonData.[0].summaryDetail}}
+<div class="section">
+  <h2>Summary Details</h2>
+  <div class="table-container">
+    <table>
+      <tr>
+        <th>Previous Close</th>
+        <td>{{jsonData.[0].summaryDetail.[0].previousClose}}</td>
+      </tr>
+      <tr>
+        <th>Open</th>
+        <td>{{jsonData.[0].summaryDetail.[0].open}}</td>
+      </tr>
+      <tr>
+        <th>Day Low</th>
+        <td>{{jsonData.[0].summaryDetail.[0].dayLow}}</td>
+      </tr>
+      <tr>
+        <th>Day High</th>
+        <td>{{jsonData.[0].summaryDetail.[0].dayHigh}}</td>
+      </tr>
+      <tr>
+        <th>Regular Market Previous Close</th>
+        <td>{{jsonData.[0].summaryDetail.[0].regularMarketPreviousClose}}</td>
+      </tr>
+      <tr>
+        <th>Regular Market Open</th>
+        <td>{{jsonData.[0].summaryDetail.[0].regularMarketOpen}}</td>
+      </tr>
+      <tr>
+        <th>Regular Market Day Low</th>
+        <td>{{jsonData.[0].summaryDetail.[0].regularMarketDayLow}}</td>
+      </tr>
+      <tr>
+        <th>Regular Market Day High</th>
+        <td>{{jsonData.[0].summaryDetail.[0].regularMarketDayHigh}}</td>
+      </tr>
+      <tr>
+        <th>Dividend Rate</th>
+        <td>{{jsonData.[0].summaryDetail.[0].dividendRate}}</td>
+      </tr>
+      <tr>
+        <th>Ex-Dividend Date</th>
+        <td>{{jsonData.[0].summaryDetail.[0].exDividendDate}}</td>
+      </tr>
+      <tr>
+        <th>Dividend Yield</th>
+        <td>{{jsonData.[0].summaryDetail.[0].dividendYield}}</td>
+      </tr>
+      <tr>
+        <th>Payout Ratio</th>
+        <td>{{jsonData.[0].summaryDetail.[0].payoutRatio}}</td>
+      </tr>
+      <tr>
+        <th>Five Year Avg Dividend Yield</th>
+        <td>{{jsonData.[0].summaryDetail.[0].fiveYearAvgDividendYield}}</td>
+      </tr>
+      <tr>
+        <th>Beta</th>
+        <td>{{jsonData.[0].summaryDetail.[0].beta}}</td>
+      </tr>
+      <tr>
+        <th>Trailing P/E</th>
+        <td>{{jsonData.[0].summaryDetail.[0].trailingPE.fmt}}</td>
+      </tr>
+      <tr>
+        <th>Forward P/E</th>
+        <td>{{jsonData.[0].summaryDetail.[0].forwardPE}}</td>
+      </tr>
+      <tr>
+        <th>Volume</th>
+        <td>{{jsonData.[0].summaryDetail.[0].volume}}</td>
+      </tr>
+      <tr>
+        <th>Regular Market Volume</th>
+        <td>{{jsonData.[0].summaryDetail.[0].regularMarketVolume}}</td>
+      </tr>
+      <tr>
+        <th>Average Volume</th>
+        <td>{{jsonData.[0].summaryDetail.[0].averageVolume}}</td>
+      </tr>
+      <tr>
+        <th>Average Volume 10 Days</th>
+        <td>{{jsonData.[0].summaryDetail.[0].averageVolume10days}}</td>
+      </tr>
+      <tr>
+        <th>Average Daily Volume 10 Day</th>
+        <td>{{jsonData.[0].summaryDetail.[0].averageDailyVolume10Day}}</td>
+      </tr>
+      <tr>
+        <th>Market Cap</th>
+        <td>{{jsonData.[0].summaryDetail.[0].marketCap}}</td>
+      </tr>
+    </table>
+  </div>
+  </div>
+  {{/if}}
+
+  {{#if jsonData.[0].defaultKeyStatistics}}
+  <div class="section">
+  <h2>Key Statistics</h2>
+  <div class="table-container">
+    <table>
+      <tr>
+        <th>Enterprise Value</th>
+        <td>{{jsonData.[0].defaultKeyStatistics.[0].enterpriseValue.fmt}}</td>
+      </tr>
+      <tr>
+        <th>Profit Margins</th>
+        <td>{{jsonData.[0].defaultKeyStatistics.[0].profitMargins.fmt}}</td>
+      </tr>
+      <tr>
+        <th>Float Shares</th>
+        <td>{{jsonData.[0].defaultKeyStatistics.[0].floatShares.fmt}}</td>
+      </tr>
+      <tr>
+        <th>Shares Outstanding</th>
+        <td>{{jsonData.[0].defaultKeyStatistics.[0].sharesOutstanding.fmt}}</td>
+      </tr>
+      <tr>
+        <th>Shares Short</th>
+        <td>{{jsonData.[0].defaultKeyStatistics.[0].sharesShort.fmt}}</td>
+      </tr>
+      <tr>
+        <th>Shares Short Prior Month</th>
+        <td>{{jsonData.[0].defaultKeyStatistics.[0].sharesShortPriorMonth.fmt}}</td>
+      </tr>
+      <tr>
+        <th>Shares Short Previous Month Date</th>
+        <td>{{jsonData.[0].defaultKeyStatistics.[0].sharesShortPreviousMonthDate.fmt}}</td>
+      </tr>
+      <tr>
+        <th>Date Short Interest</th>
+        <td>{{jsonData.[0].defaultKeyStatistics.[0].dateShortInterest.fmt}}</td>
+      </tr>
+      <tr>
+        <th>Shares Percent Shares Out</th>
+        <td>{{jsonData.[0].defaultKeyStatistics.[0].sharesPercentSharesOut.fmt}}</td>
+      </tr>
+      <tr>
+        <th>Held Percent Institutions</th>
+        <td>{{jsonData.[0].defaultKeyStatistics.[0].heldPercentInstitutions.fmt}}</td>
+      </tr>
+      <tr>
+        <th>Short Ratio</th>
+        <td>{{jsonData.[0].defaultKeyStatistics.[0].shortRatio.fmt}}</td>
+      </tr>
+      <tr>
+        <th>Short Percent Of Float</th>
+        <td>{{jsonData.[0].defaultKeyStatistics.[0].shortPercentOfFloat.fmt}}</td>
+      </tr>
+      <tr>
+        <th>Trailing Eps</th>
+        <td>{{jsonData.[0].defaultKeyStatistics.[0].trailingEps.fmt}}</td>
+      </tr>
+      <tr>
+        <th>Peg Ratio</th>
+        <td>{{jsonData.[0].defaultKeyStatistics.[0].pegRatio.fmt}}</td>
+      </tr>
+      <tr>
+        <th>Last Split Factor</th>
+        <td>{{jsonData.[0].defaultKeyStatistics.[0].lastSplitFactor}}</td>
+      </tr>
+      <tr>
+        <th>Last Split Date</th>
+        <td>{{jsonData.[0].defaultKeyStatistics.[0].lastSplitDate.fmt}}</td>
+      </tr>
+      <tr>
+        <th>Enterprise To Revenue</th>
+        <td>{{jsonData.[0].defaultKeyStatistics.[0].enterpriseToRevenue.fmt}}</td>
+      </tr>
+      <tr>
+        <th>Enterprise To Ebitda</th>
+        <td>{{jsonData.[0].defaultKeyStatistics.[0].enterpriseToEbitda.fmt}}</td>
+      </tr>
+      <tr>
+        <th>Last Dividend Date</th>
+        <td>{{jsonData.[0].defaultKeyStatistics.[0].lastDividendDate.fmt}}</td>
+      </tr>
+    </table>
+  </div>
+</div>
+{{/if}}
+
+
+</tr>
+</table>
+</div>
+
+{{/if}}
+
+</body>
+</html>
